@@ -63,10 +63,7 @@ export default function Home() {
                             elit. Curabitur in libero nec nulla blandit
                             fermentum.
                         </p>
-                        <p className="text-white">
-                            Another paragraph. Scroll will now scroll both
-                            content and rays together.
-                        </p>
+                        <p className="text-white"></p>
                     </div>
                 </div>
             </main>
