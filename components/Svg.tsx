@@ -5,7 +5,7 @@ const Svg = () => {
         <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 448 512"
             className="ml-2 h-3 w-3 text-gray-400 hover:text-gray-200"
             height="1em"

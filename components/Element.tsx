@@ -17,7 +17,7 @@ const Element = ({ Path, Name }: Props) => {
                 <svg
                     stroke="currentColor"
                     fill="currentColor"
-                    stroke-width="0"
+                    strokeWidth="0"
                     role="img"
                     viewBox="0 0 24 24"
                     className="h-5 w-5 mr-2"

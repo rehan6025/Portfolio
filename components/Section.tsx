@@ -8,7 +8,7 @@ interface SectionProps {
 
 function Section({ title, children }: SectionProps) {
     return (
-        <section id="about" className="group">
+        <section id={title} className="group">
             <div className="text-xl sm:text-2xl font-semibold text-gray-100 mb-4 flex items-center">
                 {title}
                 <a
