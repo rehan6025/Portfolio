@@ -41,7 +41,15 @@ const ProjectsSection = () => {
                 "WebSockets",
             ],
         },
-        { id: "project-2", title: "project2", shortDesc: "this is project 2 " },
+        {
+            id: "project-2",
+            title: "Syncify – Playlist Transfer App",
+            shortDesc:
+                "Transfer Spotify playlists to YouTube effortlessly with just a few clicks using fuzzy matching algorithms.",
+            fullDesc:
+                "Syncify is a playlist transfer app that allows users to seamlessly move their Spotify playlists to YouTube. Users can connect their Spotify and YouTube accounts via OAuth2, select a playlist, and transfer it with 98% accuracy.",
+            techs: ["React.js", "Redux", "Express.js", "OAuth2", ""],
+        },
         { id: "project-3", title: "project3", shortDesc: "this is project 3 " },
         { id: "project-4", title: "project4", shortDesc: "this is project 4 " },
     ];

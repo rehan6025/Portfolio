@@ -71,7 +71,7 @@ export default function Home() {
                         <div className="space-y-12">
                             <Section title="About">
                                 Computer Science student at Institute of
-                                Technology and Management, Dehardun. Learning
+                                Technology and Management, Dehradun. Learning
                                 how to build and maintain web applications
                             </Section>
                             <Section title="Present">YO</Section>
