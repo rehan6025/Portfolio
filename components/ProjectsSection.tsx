@@ -1,7 +1,7 @@
 "use client";
 import React, { ReactEventHandler, useEffect, useRef, useState } from "react";
 import Svg from "./Svg";
-import { Cross } from "lucide-react";
+import { Calendar, Cross, GitBranchPlus, Github, Globe } from "lucide-react";
 import clsx from "clsx";
 
 const ProjectsSection = () => {
@@ -48,7 +48,7 @@ const ProjectsSection = () => {
                 "Transfer Spotify playlists to YouTube effortlessly with just a few clicks using fuzzy matching algorithms.",
             fullDesc:
                 "Syncify is a playlist transfer app that allows users to seamlessly move their Spotify playlists to YouTube. Users can connect their Spotify and YouTube accounts via OAuth2, select a playlist, and transfer it with 98% accuracy.",
-            techs: ["React.js", "Redux", "Express.js", "OAuth2", ""],
+            techs: ["React.js", "Redux", "Express.js", "OAuth2", "Algorithms"],
         },
         { id: "project-3", title: "project3", shortDesc: "this is project 3 " },
         { id: "project-4", title: "project4", shortDesc: "this is project 4 " },
@@ -106,15 +106,76 @@ const ProjectsSection = () => {
                     <div className="fixed inset-0 bg-black/40 z-10 flex items-center justify-center">
                         <div
                             ref={popupRef}
-                            className="bg-white w-11/12 max-w-4xl h-5/6"
+                            className="bg-zinc-950 w-11/12 p-4 max-w-4xl h-4/5 "
                         >
-                            <button
-                                onClick={() => {
-                                    setOpened("");
-                                }}
-                            >
-                                <Cross className="text-black rotate-45" />
-                            </button>
+                            <div className="border-b border-border p-4">
+                                <div className="flex justify-between mb-2">
+                                    <h1 className="text-2xl font-semibold mt-1">
+                                        {projects.map((project) => {
+                                            if (project.id === opened) {
+                                                return project.title;
+                                            }
+                                        })}
+                                    </h1>
+                                    <button
+                                        onClick={() => {
+                                            setOpened("");
+                                        }}
+                                    >
+                                        <Cross className="cursor-pointer opacity-50 hover:opacity-100 rotate-45" />
+                                    </button>
+                                </div>
+                                <div className="flex space-x-2  items-center">
+                                    <p className="text-xs border border-border inline p-1">
+                                        Web Application
+                                    </p>
+                                    <p className="text-border flex items-center      text-sm">
+                                        <Calendar className=" pr-1  " />
+                                        Mar 2025{" "}
+                                    </p>
+                                </div>
+                                <div></div>
+                            </div>
+                            <div>
+                                image
+                                <p>
+                                    {projects.map((project) => {
+                                        if (project.id == opened) {
+                                            return project.fullDesc;
+                                        }
+                                    })}
+                                </p>
+                                <div className="mt-4">
+                                    <p className="font-semibold">
+                                        Technologies
+                                    </p>
+                                    <div className="flex space-x-2 mt-2 border-b border-border pb-5">
+                                        {projects.map((project) => {
+                                            if (project.id == opened) {
+                                                return project.techs?.map(
+                                                    (tech, index) => (
+                                                        <span
+                                                            className="text-xs py-1 px-3 text-white bg-zinc-900 hover:bg-zinc-800 rounded-full "
+                                                            key={index}
+                                                        >
+                                                            {tech}
+                                                        </span>
+                                                    )
+                                                );
+                                            }
+                                        })}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex mt-4">
+                                <button className="text-sm bg-white text-gray-900 flex items-center p-2 rounded-full space-x-1">
+                                    <Globe className="w-4 h-4 mr-2" />
+                                    Visit Website
+                                </button>
+                                <button className="text-sm bg-white text-gray-900 flex items-center p-2 rounded-full space-x-1">
+                                    <Github />
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}
