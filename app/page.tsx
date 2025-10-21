@@ -8,6 +8,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import Connect from "@/components/Connect";
 import DecryptedText from "@/components/DecryptedText";
 import Profile from "@/components/Profile";
+import Link from "next/link";
 
 export default function Home() {
     return (
@@ -31,7 +32,7 @@ export default function Home() {
                                 <Profile />
                                 <div>
                                     <div className="hover:animate-pulse group relative">
-                                        <a
+                                        <Link
                                             className="cursor-pointer tracking-wide text-gray-300 "
                                             target="_blank"
                                             href="https://drive.google.com/file/d/1J3WccJnPsaiKOExOvcf-Anwek26kulbi/view?usp=sharing"
@@ -44,7 +45,7 @@ export default function Home() {
            origin-center scale-x-0 transition-transform duration-300 ease-out
            group-hover:scale-x-100"
                                             ></span>
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -67,12 +68,12 @@ export default function Home() {
                         <section id="stack">
                             <h2 className="text-lg flex items-center">
                                 Tech-Stack
-                                <a
+                                <Link
                                     href="/#stack"
                                     className="opacity-100 transition-all"
                                 >
                                     <Svg />
-                                </a>
+                                </Link>
                             </h2>
                             <SkillStack />
                         </section>

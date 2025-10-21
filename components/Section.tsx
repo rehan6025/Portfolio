@@ -1,5 +1,6 @@
 import React from "react";
 import Svg from "./Svg";
+import Link from "next/link";
 
 interface SectionProps {
     title: string;
@@ -11,12 +12,12 @@ function Section({ title, children }: SectionProps) {
         <section id={title} className="group">
             <div className="text-xl sm:text-2xl font-semibold text-gray-100 mb-4 flex items-center">
                 {title}
-                <a
+                <Link
                     href={`/#${title}`}
                     className="opacity-0 group-hover:opacity-100 transition-all"
                 >
                     <Svg />
-                </a>
+                </Link>
             </div>
             <div className="ml-1">
                 <p className=" text-base sm:text-lg leading-relaxed text-gray-300">

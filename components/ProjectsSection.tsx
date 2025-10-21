@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Svg from "./Svg";
 import { Calendar, Cross, Github, Globe } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProjectType {
     id: string;
@@ -123,9 +124,9 @@ const ProjectsSection = () => {
         <section id="projects" className="group relative">
             <h1 className="flex items-center text-2xl font-semibold mb-4">
                 Projects
-                <a href="#projects">
+                <Link href="#projects">
                     <Svg />
-                </a>
+                </Link>
             </h1>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -141,7 +142,6 @@ const ProjectsSection = () => {
                         >
                             <div className="h-[60%] overflow-hidden ">
                                 <Image
-                                    //@ts-ignore
                                     src={project.image}
                                     width={700}
                                     height={700}
@@ -240,22 +240,22 @@ const ProjectsSection = () => {
                                 </div>
                             </div>
                             <div className="flex mt-4 space-x-2 ">
-                                <a
-                                    href={openedProject?.links.live}
+                                <Link
+                                    href={openedProject?.links.live ?? "#"}
                                     target="_blank"
                                     className=" text-xs bg-white text-gray-900 flex items-center justify-center p-2 rounded-full space-x-1 cursor-pointer"
                                 >
                                     <Globe className="w-4 h-4 mr-2" />
                                     Visit Website
-                                </a>
-                                <a
-                                    href={openedProject?.links.code}
+                                </Link>
+                                <Link
+                                    href={openedProject?.links.code ?? "#"}
                                     target="_blank"
                                     className=" text-xs bg-white text-gray-900 flex items-center p-2 rounded-full space-x-1 cursor-pointer"
                                 >
                                     <Github className="w-4 h-4 mr-2" />
                                     View Code
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
