@@ -9,6 +9,12 @@
     --color-border: #696969;
 }
 
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);

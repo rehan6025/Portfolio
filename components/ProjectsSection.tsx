@@ -1,11 +1,28 @@
 "use client";
-import React, { ReactEventHandler, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Svg from "./Svg";
-import { Calendar, Cross, GitBranchPlus, Github, Globe } from "lucide-react";
-import clsx from "clsx";
+import { Calendar, Cross, Github, Globe } from "lucide-react";
+import Image from "next/image";
+
+interface ProjectType {
+    id: string;
+    title: string;
+    shortDesc: string;
+    fullDesc: string;
+    techs: string[];
+    image: string;
+    date: string;
+    links: {
+        live: string;
+        code: string;
+    };
+}
 
 const ProjectsSection = () => {
     const [opened, setOpened] = useState<string>("");
+    const [openedProject, setOpenedProject] = useState<ProjectType | null>(
+        null
+    );
     const popupRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -15,6 +32,7 @@ const ProjectsSection = () => {
                 !popupRef.current.contains(e.target as Node)
             ) {
                 setOpened("");
+                setOpenedProject(null);
             }
         };
 
@@ -40,6 +58,12 @@ const ProjectsSection = () => {
                 "Postgres",
                 "WebSockets",
             ],
+            image: "/p1.png",
+            date: "Aug 2025",
+            links: {
+                live: "",
+                code: "https://github.com/rehan6025/draw-app",
+            },
         },
         {
             id: "project-2",
@@ -49,9 +73,50 @@ const ProjectsSection = () => {
             fullDesc:
                 "Syncify is a playlist transfer app that allows users to seamlessly move their Spotify playlists to YouTube. Users can connect their Spotify and YouTube accounts via OAuth2, select a playlist, and transfer it with 98% accuracy.",
             techs: ["React.js", "Redux", "Express.js", "OAuth2", "Algorithms"],
+            image: "/p2.png",
+            date: "May 2025",
+            links: {
+                live: "https://sync-ify.vercel.app/",
+                code: "https://github.com/rehan6025/syncify-frontend",
+            },
         },
-        { id: "project-3", title: "project3", shortDesc: "this is project 3 " },
-        { id: "project-4", title: "project4", shortDesc: "this is project 4 " },
+        {
+            id: "project-3",
+            title: "URL Shortner",
+            shortDesc:
+                "A secure URL shortener with custom links, authentication, and persistent storage",
+            fullDesc:
+                "A full-featured URL shortener that allows users to create, manage, and customize short links. Authenticated users can view their previously shortened URLs, add custom slugs (if available), and enjoy persistent storage using MongoDB. The app ensures security and uniqueness through nanoid and efficient backend validation.",
+            techs: ["React.js", "Node.js", "MongoDB", "Nanoid"],
+            image: "/p3.png",
+            date: "July 2025",
+            links: {
+                live: "https://rurll.vercel.app/",
+                code: "https://github.com/rehan6025/URL-SHORTNER",
+            },
+        },
+        {
+            id: "project-4",
+            title: "JobBoard – Job Posting & Application Portal",
+            shortDesc:
+                "A full-stack job portal where employers can post jobs, manage applications, and candidates can apply and track their status.",
+            fullDesc:
+                "JobBoard is a modern job management platform that connects employers and job seekers. Employers can create job postings, review applications, change statuses, and view applicant resumes directly via provided links. Job seekers can browse openings, apply, and track the status of their submissions in real time.",
+            techs: [
+                "TypeScript",
+                "React.js",
+                "Redux",
+                "TailwindCSS",
+                "Express.js",
+                "MongoDB",
+            ],
+            image: "/p4.png",
+            date: "September 2025",
+            links: {
+                live: "",
+                code: "https://github.com/rehan6025/Job-board-app",
+            },
+        },
     ];
 
     return (
@@ -68,10 +133,22 @@ const ProjectsSection = () => {
                     return (
                         <div
                             key={project.id}
-                            className=" w-full h-100 rounded-lg cursor-pointer  transition-all flex-col flex justify-between  text-white font-semibold border border-border hover:-translate-y-1 duration-300  "
-                            onClick={() => setOpened(project.id)}
+                            className=" w-full h-100 rounded-lg cursor-pointer  transition-all flex-col flex justify-between  text-white font-semibold border border-border  hover:-translate-y-1 duration-400 overflow-hidden hover:shadow-lg shadow-[#b89ef9]"
+                            onClick={() => {
+                                setOpened(project.id);
+                                setOpenedProject(project);
+                            }}
                         >
-                            <div className="h-[60%]">image</div>
+                            <div className="h-[60%] overflow-hidden ">
+                                <Image
+                                    //@ts-ignore
+                                    src={project.image}
+                                    width={700}
+                                    height={700}
+                                    alt="project preview"
+                                    className="hover:scale-105 transition-all duration-300"
+                                />
+                            </div>
                             <div className="bg-zinc-900 p-4 ">
                                 <h2 className="text-lg overflow-hidden whitespace-nowrap text-ellipsis">
                                     {project.title}
@@ -106,16 +183,12 @@ const ProjectsSection = () => {
                     <div className="fixed inset-0 bg-black/40 z-10 flex items-center justify-center">
                         <div
                             ref={popupRef}
-                            className="bg-zinc-950 w-11/12 p-4 max-w-4xl h-4/5 "
+                            className="bg-zinc-950 w-11/12 p-4 max-w-4xl  "
                         >
                             <div className="border-b border-border p-4">
                                 <div className="flex justify-between mb-2">
                                     <h1 className="text-2xl font-semibold mt-1">
-                                        {projects.map((project) => {
-                                            if (project.id === opened) {
-                                                return project.title;
-                                            }
-                                        })}
+                                        {openedProject?.title}
                                     </h1>
                                     <button
                                         onClick={() => {
@@ -131,50 +204,58 @@ const ProjectsSection = () => {
                                     </p>
                                     <p className="text-border flex items-center      text-sm">
                                         <Calendar className=" pr-1  " />
-                                        Mar 2025{" "}
+                                        {openedProject?.date}
                                     </p>
                                 </div>
-                                <div></div>
                             </div>
-                            <div>
-                                image
-                                <p>
-                                    {projects.map((project) => {
-                                        if (project.id == opened) {
-                                            return project.fullDesc;
-                                        }
-                                    })}
+                            <div className="flex justify-center mt-2 mb-2 overflow-hidden">
+                                <Image
+                                    src={openedProject?.image || ""}
+                                    alt="project preview"
+                                    width={600}
+                                    height={600}
+                                    className="hover:scale-105 transition-all duration-300"
+                                />
+                            </div>
+                            <div className="mt-6">
+                                <p className="text-gray-400">
+                                    {openedProject?.fullDesc}
                                 </p>
-                                <div className="mt-4">
+                                <div className="mt-5">
                                     <p className="font-semibold">
                                         Technologies
                                     </p>
                                     <div className="flex space-x-2 mt-2 border-b border-border pb-5">
-                                        {projects.map((project) => {
-                                            if (project.id == opened) {
-                                                return project.techs?.map(
-                                                    (tech, index) => (
-                                                        <span
-                                                            className="text-xs py-1 px-3 text-white bg-zinc-900 hover:bg-zinc-800 rounded-full "
-                                                            key={index}
-                                                        >
-                                                            {tech}
-                                                        </span>
-                                                    )
-                                                );
-                                            }
-                                        })}
+                                        {openedProject?.techs?.map(
+                                            (tech, index) => (
+                                                <span
+                                                    className="text-xs py-1 px-3 text-white bg-zinc-900 hover:bg-zinc-800 rounded-full "
+                                                    key={index}
+                                                >
+                                                    {tech}
+                                                </span>
+                                            )
+                                        )}
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex mt-4">
-                                <button className="text-sm bg-white text-gray-900 flex items-center p-2 rounded-full space-x-1">
+                            <div className="flex mt-4 space-x-2 ">
+                                <a
+                                    href={openedProject?.links.live}
+                                    target="_blank"
+                                    className=" text-xs bg-white text-gray-900 flex items-center justify-center p-2 rounded-full space-x-1 cursor-pointer"
+                                >
                                     <Globe className="w-4 h-4 mr-2" />
                                     Visit Website
-                                </button>
-                                <button className="text-sm bg-white text-gray-900 flex items-center p-2 rounded-full space-x-1">
-                                    <Github />
-                                </button>
+                                </a>
+                                <a
+                                    href={openedProject?.links.code}
+                                    target="_blank"
+                                    className=" text-xs bg-white text-gray-900 flex items-center p-2 rounded-full space-x-1 cursor-pointer"
+                                >
+                                    <Github className="w-4 h-4 mr-2" />
+                                    View Code
+                                </a>
                             </div>
                         </div>
                     </div>

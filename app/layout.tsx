@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import LenisProvider from "@/components/LenisProvider";
 
 const roboto = Roboto({
     variable: "--font-roboto",
@@ -19,7 +20,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${roboto.className}  `}>{children}</body>
+            <body className={`${roboto.className}  `}>
+                <LenisProvider>{children}</LenisProvider>
+            </body>
         </html>
     );
 }

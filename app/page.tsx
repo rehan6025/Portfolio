@@ -3,10 +3,11 @@ import LightRays from "@/components/LightRays";
 import Section from "@/components/Section";
 import Svg from "@/components/Svg";
 import { motion } from "motion/react";
-import Element from "@/components/Element";
 import SkillStack from "@/components/SkillStack";
 import ProjectsSection from "@/components/ProjectsSection";
-import PopupPractise from "@/components/PopupPractise";
+import Connect from "@/components/Connect";
+import DecryptedText from "@/components/DecryptedText";
+import Profile from "@/components/Profile";
 
 export default function Home() {
     return (
@@ -24,28 +25,10 @@ export default function Home() {
             />
             <main className="relative bg-transparent">
                 <div className="container px-4 sm:px-6 md:px-8 py-6 max-w-7xl mx-auto">
-                    <div className="w-full mx-auto bg-transparent max-w-4xl py-4 px-4 sm:py-10 sm:px-6 space-y-7 sm:space-y-16">
+                    <div className="w-full mx-auto bg-transparent max-w-4xl pt-4 px-4 sm:pt-10 sm:px-6 space-y-7 sm:space-y-16">
                         <div className="space-y-4">
                             <div className="flex justify-between w-full items-center">
-                                <div className="flex gap-x-4">
-                                    <div className="flex items-center">
-                                        <Image
-                                            src="/CrpMyImage.jpg"
-                                            alt="rehan-ahmed-image"
-                                            width={70}
-                                            height={70}
-                                        />
-                                    </div>
-                                    <div>
-                                        <h1 className="text-3xl font-semibold tracking-wide leading-normal">
-                                            Rehan Ahmed
-                                        </h1>
-                                        <div className="text-xl text-gray-400 tracking-normal">
-                                            <div>Software Engineer</div>
-                                            <div>Full Stack Developer</div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <Profile />
                                 <div>
                                     <div className="hover:animate-pulse group relative">
                                         <a
@@ -72,9 +55,13 @@ export default function Home() {
                             <Section title="About">
                                 Computer Science student at Institute of
                                 Technology and Management, Dehradun. Learning
-                                how to build and maintain web applications
+                                how to build and maintain web applications.
                             </Section>
-                            <Section title="Present">YO</Section>
+                            <Section title="Present">
+                                Developing and maintaining systems, and actively
+                                seeking opportunities to grow as a full stack
+                                developer.
+                            </Section>
                         </div>
 
                         <section id="stack">
@@ -90,6 +77,30 @@ export default function Home() {
                             <SkillStack />
                         </section>
                         <ProjectsSection />
+                        <Connect />
+                        <div
+                            className="flex items-center justify-center"
+                            style={{
+                                backgroundClip: "text",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                color: "transparent",
+                                backgroundImage:
+                                    "linear-gradient(rgb(255, 255, 255), rgb(0,0,0))",
+                            }}
+                        >
+                            <DecryptedText
+                                text="REHAN AHMED"
+                                speed={70}
+                                maxIterations={90}
+                                sequential={true}
+                                revealDirection="start"
+                                animateOn="both"
+                                characters="ABCDEFエィ゛もアゲゴバパボホユヨリモルゥォヾオエィㄿㄶㆂㆊㆉㆈㆇㆆㅃㅌㅍㅎㅘㅗㅖㅠLMNOPQRSTUVWXYZअयरऱलवशषसह"
+                                className="text-7xl sm:text-nowrap text-center uppercase cursor-pointer"
+                                encryptedClassName="text-7xl sm:text-nowrap text-center uppercase cursor-pointer"
+                            />
+                        </div>
                     </div>
                 </div>
             </main>
