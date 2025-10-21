@@ -1,11 +1,12 @@
-name: Build and deploy Portfolio
+name: Deploy Next.js to Netlify
+
 on:
     push:
         branches:
             - main
-    pull_request:
+
 jobs:
-    build:
+    build-and-deploy:
         runs-on: ubuntu-22.04
         steps:
             - uses: actions/checkout@v4
@@ -18,7 +19,7 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
-            - name: Build Next app
+            - name: Build Next.js
               run: npm run build
 
             - name: Deploy to Netlify
@@ -28,4 +29,3 @@ jobs:
               env:
                   NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
                   NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-              timeout-minutes: 15
