@@ -28,7 +28,7 @@ const connectOptions: connectOptInterface[] = [
     {
         platform: "Leetcode",
         url: "https://leetcode.com/u/rehan_999/",
-        username: "@rehan_999",
+        username: "@rehan6025",
     },
     {
         platform: "Email",
