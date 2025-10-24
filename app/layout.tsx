@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
+import CustomCursor from "@/components/CustomCursor";
 
 const roboto = Roboto({
     variable: "--font-roboto",
@@ -22,6 +23,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${roboto.className}  bg-black text-white`}>
                 <LenisProvider>{children}</LenisProvider>
+                <CustomCursor />
             </body>
         </html>
     );
