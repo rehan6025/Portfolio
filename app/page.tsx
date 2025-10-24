@@ -35,7 +35,7 @@ export default function Home() {
                                         <Link
                                             className="cursor-pointer tracking-wide text-gray-300 "
                                             target="_blank"
-                                            href="https://drive.google.com/file/d/1J3WccJnPsaiKOExOvcf-Anwek26kulbi/view?usp=sharing"
+                                            href="https://drive.google.com/file/d/1wyRT5VyaHpzXc9XiM2_P7M88k0gt8UPj/view?usp=sharing"
                                         >
                                             <p className="group-hover:text-gray-100 transition-all ">
                                                 My Resume
