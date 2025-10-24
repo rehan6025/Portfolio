@@ -4,6 +4,8 @@ import Svg from "./Svg";
 import { Calendar, Cross, Github, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "motion/react";
+import { AnimatePresence } from "motion/react";
 
 interface ProjectType {
     id: string;
@@ -44,20 +46,20 @@ const ProjectsSection = () => {
         };
     }, [opened]);
 
-    useEffect(() => {
-        if (opened) {
-            document.body.style.overflow = "hidden";
-            document.documentElement.style.overflow = "hidden";
-        } else {
-            document.body.style.overflow = "";
-            document.documentElement.style.overflow = "";
-        }
+    // useEffect(() => {
+    //     if (opened) {
+    //         document.body.style.overflow = "hidden";
+    //         document.documentElement.style.overflow = "hidden";
+    //     } else {
+    //         document.body.style.overflow = "";
+    //         document.documentElement.style.overflow = "";
+    //     }
 
-        return () => {
-            document.body.style.overflow = "";
-            document.documentElement.style.overflow = "";
-        };
-    }, [opened]);
+    //     return () => {
+    //         document.body.style.overflow = "";
+    //         document.documentElement.style.overflow = "";
+    //     };
+    // }, [opened]);
 
     const projects = [
         {
@@ -193,88 +195,108 @@ const ProjectsSection = () => {
                         console.log(opened);
                     }}
                 ></div> */}
-
-                {opened && (
-                    <div className="fixed inset-0 bg-black/40 backdrop-blur-lg  z-20 flex items-center justify-center ">
-                        <div
-                            ref={popupRef}
-                            className="bg-zinc-950 w-11/12 flex flex-col pl-4 pr-4 pb-3 max-w-4xl border border-[#b89ef9]  rounded-xl  shadow-2xl shadow-[#b89ef9] overflow-auto"
+                <AnimatePresence>
+                    {opened && (
+                        <motion.div
+                            initial={{ x: 300, opacity: 0 }}
+                            animate={{
+                                x: 0,
+                                opacity: 1,
+                                transition: {
+                                    ease: [0.02, 0.35, 0.25, 0.99],
+                                    type: "spring",
+                                    damping: 20,
+                                    mass: 1,
+                                    duration: 300,
+                                },
+                            }}
+                            exit={{
+                                x: -300,
+                                opacity: 0,
+                            }}
+                            key={"modal"}
+                            className="fixed inset-0 bg-black/40 backdrop-blur-lg  z-20 flex items-center justify-center "
                         >
-                            <div className="border-b border-border p-4">
-                                <div className="flex justify-between mb-2">
-                                    <h1 className="text-2xl font-semibold mt-1">
-                                        {openedProject?.title}
-                                    </h1>
-                                    <button
-                                        onClick={() => {
-                                            setOpened("");
-                                        }}
-                                    >
-                                        <Cross className="cursor-pointer opacity-50 hover:opacity-100 rotate-45" />
-                                    </button>
-                                </div>
-                                <div className="flex space-x-2  items-center">
-                                    <p className="text-xs border border-border inline p-1">
-                                        Web Application
-                                    </p>
-                                    <p className="text-border flex items-center      text-sm">
-                                        <Calendar className=" pr-1  " />
-                                        {openedProject?.date}
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="flex justify-center mt-2 mb-2 overflow-hidden">
-                                <Image
-                                    src={openedProject?.image || ""}
-                                    alt="project preview"
-                                    width={600}
-                                    height={337.5}
-                                    className="hover:scale-105 transition-all duration-300"
-                                />
-                            </div>
-                            <div className="mt-6">
-                                <p className="text-gray-400">
-                                    {openedProject?.fullDesc}
-                                </p>
-                                <div className="mt-5">
-                                    <p className="font-semibold">
-                                        Technologies
-                                    </p>
-                                    <div className="flex space-x-2 mt-2 border-b border-border pb-5">
-                                        {openedProject?.techs?.map(
-                                            (tech, index) => (
-                                                <span
-                                                    className="text-xs py-1 px-3 text-white bg-zinc-900 hover:bg-zinc-800 rounded-full "
-                                                    key={index}
-                                                >
-                                                    {tech}
-                                                </span>
-                                            )
-                                        )}
+                            <div
+                                ref={popupRef}
+                                className="bg-zinc-950 w-11/12 flex flex-col pl-4 pr-4 pb-3 max-w-4xl border border-[#b89ef9]  rounded-xl  shadow-2xl shadow-[#b89ef9] overflow-auto"
+                            >
+                                <div className="border-b border-border p-4">
+                                    <div className="flex justify-between mb-2">
+                                        <h1 className="text-2xl font-semibold mt-1">
+                                            {openedProject?.title}
+                                        </h1>
+                                        <button
+                                            onClick={() => {
+                                                setOpened("");
+                                            }}
+                                        >
+                                            <Cross className="cursor-pointer opacity-50 hover:opacity-100 rotate-45" />
+                                        </button>
+                                    </div>
+                                    <div className="flex space-x-2  items-center">
+                                        <p className="text-xs border border-border inline p-1">
+                                            Web Application
+                                        </p>
+                                        <p className="text-border flex items-center      text-sm">
+                                            <Calendar className=" pr-1  " />
+                                            {openedProject?.date}
+                                        </p>
                                     </div>
                                 </div>
+                                <div className="flex justify-center mt-2 mb-2 overflow-hidden">
+                                    <Image
+                                        src={openedProject?.image || ""}
+                                        alt="project preview"
+                                        width={600}
+                                        height={337.5}
+                                        className="hover:scale-105 transition-all duration-300"
+                                    />
+                                </div>
+                                <div className="mt-6">
+                                    <p className="text-gray-400">
+                                        {openedProject?.fullDesc}
+                                    </p>
+                                    <div className="mt-5">
+                                        <p className="font-semibold">
+                                            Technologies
+                                        </p>
+                                        <div className="flex space-x-2 mt-2 border-b border-border pb-5">
+                                            {openedProject?.techs?.map(
+                                                (tech, index) => (
+                                                    <span
+                                                        className="text-xs py-1 px-3 text-white bg-zinc-900 hover:bg-zinc-800 rounded-full "
+                                                        key={index}
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                )
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex mt-4 space-x-2 ">
+                                    <Link
+                                        href={openedProject?.links.live ?? "#"}
+                                        target="_blank"
+                                        className=" text-xs bg-white text-gray-900 flex items-center justify-center p-2 rounded-full space-x-1 cursor-pointer"
+                                    >
+                                        <Globe className="w-4 h-4 mr-2" />
+                                        Visit Website
+                                    </Link>
+                                    <Link
+                                        href={openedProject?.links.code ?? "#"}
+                                        target="_blank"
+                                        className=" text-xs bg-white text-gray-900 flex items-center p-2 rounded-full space-x-1 cursor-pointer"
+                                    >
+                                        <Github className="w-4 h-4 mr-2" />
+                                        View Code
+                                    </Link>
+                                </div>
                             </div>
-                            <div className="flex mt-4 space-x-2 ">
-                                <Link
-                                    href={openedProject?.links.live ?? "#"}
-                                    target="_blank"
-                                    className=" text-xs bg-white text-gray-900 flex items-center justify-center p-2 rounded-full space-x-1 cursor-pointer"
-                                >
-                                    <Globe className="w-4 h-4 mr-2" />
-                                    Visit Website
-                                </Link>
-                                <Link
-                                    href={openedProject?.links.code ?? "#"}
-                                    target="_blank"
-                                    className=" text-xs bg-white text-gray-900 flex items-center p-2 rounded-full space-x-1 cursor-pointer"
-                                >
-                                    <Github className="w-4 h-4 mr-2" />
-                                    View Code
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                )}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );
