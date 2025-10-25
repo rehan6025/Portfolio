@@ -27,7 +27,7 @@ const connectOptions: connectOptInterface[] = [
     },
     {
         platform: "Leetcode",
-        url: "https://leetcode.com/u/rehan_999/",
+        url: "https://leetcode.com/u/rehan6025/",
         username: "@rehan6025",
     },
     {
