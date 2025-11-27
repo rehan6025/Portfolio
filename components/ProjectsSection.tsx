@@ -76,10 +76,10 @@ const ProjectsSection = () => {
                 "Postgres",
                 "WebSockets",
             ],
-            image: "/p1.png",
+            image: "/sketchroom.gif",
             date: "Aug 2025",
             links: {
-                live: "",
+                live: "https://sketch-room.netlify.app/",
                 code: "https://github.com/rehan6025/draw-app",
             },
         },

@@ -18,7 +18,7 @@ const CustomCursor: React.FC = () => {
 
     return (
         <div
-            className="pointer-events-none fixed top-0 left-0 w-4 h-4 bg-white rounded-full mix-blend-difference z-[9999] transition-transform duration-100 ease-out"
+            className="pointer-events-none hidden sm:inline-block fixed top-0 left-0 w-4 h-4 bg-white rounded-full mix-blend-difference z-[9999] transition-transform duration-100 ease-out"
             style={{
                 transform: `translate3d(${position.x - 8}px, ${
                     position.y - 8
