@@ -24,7 +24,7 @@ interface ProjectType {
 const ProjectsSection = () => {
     const [opened, setOpened] = useState<string>("");
     const [openedProject, setOpenedProject] = useState<ProjectType | null>(
-        null
+        null,
     );
     const popupRef = useRef<HTMLDivElement>(null);
 
@@ -83,8 +83,36 @@ const ProjectsSection = () => {
                 code: "https://github.com/rehan6025/draw-app",
             },
         },
+
         {
             id: "project-2",
+            title: "GitDrop",
+
+            shortDesc:
+                "A deployment automation platform that builds and deploys GitHub repositories through Docker-based sandboxes, background job queues, and asynchronous worker pipelines.",
+
+            fullDesc:
+                "GitDrop is a deployment automation platform that allows users to authenticate with GitHub, select repositories, and trigger deployments through an asynchronous build pipeline. Deployment requests are queued using BullMQ, processed by dedicated workers, executed inside isolated Docker environments, and tracked through PostgreSQL. The system was designed to explore backend architecture concepts such as job queues, deployment orchestration, authentication, and build isolation.",
+
+            techs: [
+                "TypeScript",
+                "NestJS",
+                "PostgreSQL",
+                "Prisma",
+                "BullMQ",
+                "Redis",
+                "Docker",
+                "GitHub OAuth",
+            ],
+            image: "/p4.png",
+            date: "May 2026",
+            links: {
+                live: "",
+                code: "https://github.com/rehan6025/GitDrop",
+            },
+        },
+        {
+            id: "project-3",
             title: "Syncify – Playlist Transfer App",
             shortDesc:
                 "Transfer Spotify playlists to YouTube effortlessly with just a few clicks using fuzzy matching algorithms.",
@@ -99,7 +127,7 @@ const ProjectsSection = () => {
             },
         },
         {
-            id: "project-3",
+            id: "project-4",
             title: "URL Shortner",
             shortDesc:
                 "A secure URL shortener with custom links, authentication, and persistent storage",
@@ -111,28 +139,6 @@ const ProjectsSection = () => {
             links: {
                 live: "https://rurll.vercel.app/",
                 code: "https://github.com/rehan6025/URL-SHORTNER",
-            },
-        },
-        {
-            id: "project-4",
-            title: "JobBoard – Job Posting & Application Portal",
-            shortDesc:
-                "A full-stack job portal where employers can post jobs, manage applications, and candidates can apply and track their status.",
-            fullDesc:
-                "JobBoard is a modern job management platform that connects employers and job seekers. Employers can create job postings, review applications, change statuses, and view applicant resumes directly via provided links. Job seekers can browse openings, apply, and track the status of their submissions in real time.",
-            techs: [
-                "TypeScript",
-                "React.js",
-                "Redux",
-                "TailwindCSS",
-                "Express.js",
-                "MongoDB",
-            ],
-            image: "/p4.png",
-            date: "September 2025",
-            links: {
-                live: "",
-                code: "https://github.com/rehan6025/Job-board-app",
             },
         },
     ];
@@ -270,7 +276,7 @@ const ProjectsSection = () => {
                                                     >
                                                         {tech}
                                                     </span>
-                                                )
+                                                ),
                                             )}
                                         </div>
                                     </div>
