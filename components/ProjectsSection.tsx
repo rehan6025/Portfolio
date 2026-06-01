@@ -94,16 +94,7 @@ const ProjectsSection = () => {
             fullDesc:
                 "GitDrop is a deployment automation platform that allows users to authenticate with GitHub, select repositories, and trigger deployments through an asynchronous build pipeline. Deployment requests are queued using BullMQ, processed by dedicated workers, executed inside isolated Docker environments, and tracked through PostgreSQL. The system was designed to explore backend architecture concepts such as job queues, deployment orchestration, authentication, and build isolation.",
 
-            techs: [
-                "TypeScript",
-                "NestJS",
-                "PostgreSQL",
-                "Prisma",
-                "BullMQ",
-                "Redis",
-                "Docker",
-                "GitHub OAuth",
-            ],
+            techs: ["TypeScript", "NestJS", "Postgre", "BullMQ", "Docker"],
             image: "/p4.png",
             date: "May 2026",
             links: {
